@@ -9,15 +9,27 @@
         <h1>Pomodoro Timer</h1>
         <div>
             <div id="timer"></div>
-            <button>Start</button>
-            <button>Stop</button>
+            <button id="start" onclick="start()">Start</button>
+            <button onclick="stop()">Stop</button>
         </div>
     </body>
     <script>
+        function start() {
+            timerId = window.setInterval(decrement, 1000);
+            document.getElementById("start").disabled = true;
+        }
+
+        function stop() {
+            window.clearInterval(timerId);
+            remainingSeconds = 60 * totalMinutes;
+            document.getElementById("timer").innerHTML = totalMinutes + " : " + "00";
+            document.getElementById("start").disabled = false;
+        }
+
         function decrement() {
             remainingSeconds = remainingSeconds - 1;
-            minutes = Math.floor(remainingSeconds / 60);
-            seconds = remainingSeconds % 60;
+            const minutes = Math.floor(remainingSeconds / 60);
+            const seconds = remainingSeconds % 60;
 
             let displayMinutes = minutes;
             let displaySeconds = seconds;
@@ -39,11 +51,7 @@
 
         const totalMinutes = 1;
         let remainingSeconds = 60 * totalMinutes;
-        let minutes = totalMinutes;
-        let seconds;
-
-        document.getElementById("timer").innerHTML = minutes + " : " + "00";
-
-        const timerId = window.setInterval(decrement, 1000);
+        document.getElementById("timer").innerHTML = totalMinutes + " : " + "00";
+        let timerId;
     </script>
 </html>
