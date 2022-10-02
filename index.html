@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Pomodoro Timer</title>
+        <!-- <link rel="stylesheet" type="text/css" href="theme.css"> -->
+    </head>
+    <body>
+        <h1>Pomodoro Timer</h1>
+        <div>
+            <div id="timer"></div>
+            <button>Start</button>
+            <button>Stop</button>
+        </div>
+    </body>
+    <script>
+        function decrement() {
+            remainingSeconds = remainingSeconds - 1;
+            minutes = Math.floor(remainingSeconds / 60);
+            seconds = remainingSeconds % 60;
+
+            let displayMinutes = minutes;
+            let displaySeconds = seconds;
+
+            if (minutes < 10) {
+                displayMinutes = "0" + displayMinutes;
+            }
+            if (displaySeconds < 10) {
+                displaySeconds = displaySeconds + "0";
+            }
+
+            document.getElementById("timer").innerHTML = displayMinutes + " : " + displaySeconds;
+
+            if (remainingSeconds === 0) {
+                window.clearInterval(timerId);
+                alert("Pomodoro finished");
+            }
+        }
+
+        const totalMinutes = 1;
+        let remainingSeconds = 60 * totalMinutes;
+        let minutes = totalMinutes;
+        let seconds;
+
+        document.getElementById("timer").innerHTML = minutes + " : " + "00";
+
+        const timerId = window.setInterval(decrement, 1000);
+    </script>
+</html>
