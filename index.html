@@ -2,15 +2,21 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Pomodoro Timer</title>
-        <!-- <link rel="stylesheet" type="text/css" href="theme.css"> -->
+        <title>Pom</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <h1>Pomodoro Timer</h1>
-        <div>
-            <div id="timer"></div>
-            <button id="start" onclick="start()">Start</button>
-            <button onclick="stop()">Stop</button>
+        <div class="container">
+            <div>
+                <div id="heading">Pomodoro Timer - Pom</div>
+                <div id="timer-container">
+                    <div id="timer"></div>
+                    <div id="buttons">
+                        <button class="button" id="start" onclick="start()">Start</button>
+                        <button class="button" id="stop" onclick="stop()">Stop</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
     <script>
@@ -22,7 +28,7 @@
         function stop() {
             window.clearInterval(timerId);
             remainingSeconds = 60 * totalMinutes;
-            document.getElementById("timer").innerHTML = totalMinutes + " : " + "00";
+            document.getElementById("timer").innerHTML = totalMinutes + ":" + "00";
             document.getElementById("start").disabled = false;
         }
 
@@ -41,7 +47,7 @@
                 displaySeconds = displaySeconds + "0";
             }
 
-            document.getElementById("timer").innerHTML = displayMinutes + " : " + displaySeconds;
+            document.getElementById("timer").innerHTML = displayMinutes + ":" + displaySeconds;
 
             if (remainingSeconds === 0) {
                 window.clearInterval(timerId);
@@ -49,9 +55,9 @@
             }
         }
 
-        const totalMinutes = 1;
+        const totalMinutes = 25;
         let remainingSeconds = 60 * totalMinutes;
-        document.getElementById("timer").innerHTML = totalMinutes + " : " + "00";
+        document.getElementById("timer").innerHTML = totalMinutes + ":" + "00";
         let timerId;
     </script>
 </html>
