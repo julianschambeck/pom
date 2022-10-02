@@ -12,7 +12,6 @@ body {
 }
 
 #timer-container {
-    margin-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,4 +44,14 @@ body {
 
 #stop {
     margin-left: 10px
+}
+
+#timer-outer-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#sand-clock {
+    margin-left: 60px;
 }
