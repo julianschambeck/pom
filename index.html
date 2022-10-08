@@ -26,7 +26,12 @@
         const totalMinutes = 25;
         let timerId;
         let remainingSeconds;
- 
+        let permission;
+
+        Notification.requestPermission().then((value) => {
+            permission = value;
+        }).catch(console.log);
+
         initTimer();
 
         function initTimer() {
@@ -57,15 +62,27 @@
                 displayMinutes = "0" + displayMinutes;
             }
             if (displaySeconds < 10) {
-                displaySeconds = displaySeconds + "0";
+                displaySeconds =  "0" + displaySeconds;
             }
 
             document.getElementById("current-timer").innerHTML = displayMinutes + ":" + displaySeconds;
 
             if (remainingSeconds === 0) {
                 window.clearInterval(timerId);
-                alert("Pomodoro finished");
+                if (permission === "granted") {
+                    showNotification();
+                }
             }
+        }
+
+        function showNotification() {
+            const notification = new Notification("Pomodoro Timer - Pom", {
+                body: "Pomodoro is over. Time to take a break.",
+                icon: "bell.png",
+                // not supported yet in Firefox
+                silent: true
+            });
+            setTimeout(() => notification.close(), 7 * 1000);
         }
     </script>
 </html>
