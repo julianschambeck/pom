@@ -1,3 +1,7 @@
+html {
+    font-size: 62.5%;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -5,8 +9,18 @@ body {
     font-family: "Courier New", monospace;
 }
 
-.container {
+#title {
+    font-size: 6rem;
+}
+
+#root {
     width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#timer-outer-container {
+    margin-top: 5%;
     display: flex;
     justify-content: center;
 }
@@ -19,40 +33,33 @@ body {
 }
 
 #buttons {
-    margin-top: 30px;
-}
-
-#timer {
-    font-size: 6rem;
-}
-
-#heading {
-    font-size: 4rem;
-}
-
-.button {
-    font-family: "Courier New", monospace;
-    font-size: 1.5rem;
-    border: 2px solid #d3d3d3;
-    border-radius: 8px;
-    padding: 5px;
-    background-color: #dcdcdc;
-}
-
-#start {
-    margin-right: 10px;
-}
-
-#stop {
-    margin-left: 10px
-}
-
-#timer-outer-container {
-    margin-top: 30px;
+    margin-top: 5%;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
 
+.button {
+    font-family: "Courier New", monospace;
+    font-size: 2.5rem;
+    border: 2px solid #d3d3d3;
+    border-radius: 8px;
+    padding: 2%;
+    background-color: #dcdcdc;
+}
+
+#start {
+    margin-right: 2%;
+}
+
+#reset {
+    margin-left: 2%;
+}
+
+#current-timer {
+    font-size: 8rem;
+}
+
 #tomato {
-    margin-left: 60px;
+    margin-left: 10%;
 }

@@ -6,12 +6,12 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <div class="container">
+        <div id="root">
             <div>
-                <div id="heading">Pomodoro Timer - Pom</div>
+                <div id="title">Pomodoro Timer - Pom</div>
                 <div id="timer-outer-container">
                     <div id="timer-container">
-                        <div id="timer"></div>
+                        <div id="current-timer"></div>
                         <div id="buttons">
                             <button class="button" id="start" onclick="start()">Start</button>
                             <button class="button" id="reset" onclick="reset()">Reset</button>
@@ -31,7 +31,7 @@
 
         function initTimer() {
             remainingSeconds = totalMinutes * 60;
-            document.getElementById("timer").innerHTML = totalMinutes + ":" + "00";
+            document.getElementById("current-timer").innerHTML = totalMinutes + ":" + "00";
         }
 
         function start() {
@@ -60,7 +60,7 @@
                 displaySeconds = displaySeconds + "0";
             }
 
-            document.getElementById("timer").innerHTML = displayMinutes + ":" + displaySeconds;
+            document.getElementById("current-timer").innerHTML = displayMinutes + ":" + displaySeconds;
 
             if (remainingSeconds === 0) {
                 window.clearInterval(timerId);
