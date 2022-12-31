@@ -28,10 +28,6 @@
         let remainingSeconds;
         let permission;
 
-        Notification.requestPermission().then((value) => {
-            permission = value;
-        }).catch(console.log);
-
         initTimer();
 
         function initTimer() {
@@ -40,6 +36,9 @@
         }
 
         function start() {
+            Notification.requestPermission().then((value) => {
+                permission = value;
+            }).catch(console.log);
             timerId = window.setInterval(decrement, 1000);
             document.getElementById("start").disabled = true;
         }
@@ -78,9 +77,7 @@
         function showNotification() {
             const notification = new Notification("Pomodoro Timer - Pom", {
                 body: "Pomodoro is over. Time to take a break.",
-                icon: "bell.png",
-                // not supported yet in Firefox
-                silent: true
+                icon: "bell.png"
             });
             setTimeout(() => notification.close(), 7 * 1000);
         }
